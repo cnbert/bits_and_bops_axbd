@@ -1,0 +1,13 @@
+# crear un trigger que en lugar de modificar la informacion de las filas 
+# en la tabla DEPT muestre el mensaje 
+# NO DEBERIA MODIFICAR LOS DATOS DE LOS DEPARTAMENTOS
+
+DELIMITER $$ 
+DUMP TRIGGER IF EXISTS T2 $$
+CREATE TRIGGER T2 ON DEPT
+    INSTEAD OF UPDATE
+BEGIN
+   SELECT 'NO DEBERIA MODIFICAR LOS DATOS DE LOS DEPARTAMENTOS';
+END;$$
+
+DELIMITER ;
